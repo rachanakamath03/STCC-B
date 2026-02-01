@@ -61,3 +61,53 @@ Relative: data/file.txt
 - mv old.txt new.txt
 - rm file.txt
 - rmdir empty_dir
+
+## Class 2 : Working with Biological Files (FASTA & GTF)
+
+## FASTA Format
+- Header lines begin with >
+- Each header corresponds to one biological sequence
+- FASTA contains no quality scores (unlike FASTQ)
+- grep -c "^>" file.fasta
+- Counts number of sequences.
+
+## FASTQ Format (Conceptual)
+- FASTQ stores:
+- Sequence identifiers
+- Raw sequences
+- Quality scores (Phred)
+- 4-line structure per record:
+- @ID
+- Sequence
+- +
+- Quality string
+
+## GTF Format
+- Tab-separated genomic annotation format
+- Each row = genomic feature
+Column 9 stores attributes:
+- gene_id
+- transcript_id
+- Exact quoting is required when searching attributes.
+
+- Safe Inspection of Large Files
+- Never cat large genomic files.
+- Tool	Purpose
+- less	Scroll safely
+- head	Inspect headers
+- tail	Check file endings
+- sed -n	Controlled range viewing
+- sed -n '1,50p' file.gtf
+
+FASTA Quality Control Pipelines
+- grep -v "^>" file.fasta | tr 'a-z' 'A-Z' | grep "[^ATGC]"
+- Purpose:
+- Remove headers
+- Normalize case
+- Detect invalid bases
+
+## GTF Parsing with awk
+- awk -F'\t' '$3=="exon" {print $1 ":" $4 "-" $5 "\t" $9}' file.gtf
+- Used for:
+-- Extracting exon coordinates
+-- Structured annotation parsing
