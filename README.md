@@ -53,8 +53,8 @@ Relative: data/file.txt
 - cat samples.csv
 
 ## Operator	Meaning
-- >	Overwrite
-- >>	Append safely
+- Overwrite - >
+- Append safely - >>	
 
 ## Copying, Moving & Deleting
 - cp file1.txt backup.txt
