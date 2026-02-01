@@ -2,13 +2,19 @@
 
 ## Short-Term Course on Unix for Bioinformatics
 
-STCC Mini Project – Class 1 Documentation
+1. Introduction
+Modern bioinformatics relies heavily on Unix/Linux environments for processing, analyzing, and managing large-scale biological datasets. This course focuses on practical command-line proficiency, enabling reproducible, scalable, and debuggable workflows commonly used in genomics, transcriptomics, and computational biology.
+All commands were practiced using macOS Terminal, which is Unix-based and functionally equivalent to Linux systems used in HPC clusters and servers.
 
-Overview
-
-Unix is a foundational and indispensable skill for bioinformaticians. Most bioinformatics tools, pipelines, high-performance computing (HPC) environments, and cloud-based platforms are Unix/Linux-based. This course focuses on building practical Unix command-line proficiency for biological data analysis and research workflows.
-This repository documents the concepts, commands, and practical use-cases covered during the Short-Term Course on Unix, with hands-on emphasis.
-
-## System Environment
-- Operating System: macOS
-- Shell: Terminal (zsh / bash)
+Why Linux / Unix Is Essential in Bioinformatics
+Nature of Bioinformatics Data
+Biological data is:
+Large (GB–TB scale)
+Text-based (FASTA, FASTQ, GTF, BED, VCF)
+Often processed remotely (HPC, cloud)
+Characteristics of Bioinformatics Tools
+Most tools:
+Lack graphical user interfaces
+Expect text input via standard streams
+Produce text-based outputs
+Are designed to be chained in pipelines
