@@ -7,11 +7,13 @@ Modern bioinformatics relies heavily on Unix/Linux environments for processing, 
 All commands were practiced using macOS Terminal, which is Unix-based and functionally equivalent to Linux systems used in HPC clusters and servers.
 
 Why Linux / Unix Is Essential in Bioinformatics
+
 Nature of Bioinformatics Data
 Biological data is:
 Large (GB–TB scale)
 Text-based (FASTA, FASTQ, GTF, BED, VCF)
 Often processed remotely (HPC, cloud)
+
 Characteristics of Bioinformatics Tools
 Most tools:
 Lack graphical user interfaces
