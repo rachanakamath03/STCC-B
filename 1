@@ -1,0 +1,69 @@
+Unix / Shell Basics 0The Unix shell allows direct interaction with the operating system using commands. It is foundational for handling bioinformatics data.
+
+- Directory and File Navigation Commands
+pwd- Prints the current working directory
+Helps you know where you are in the filesystem
+
+ls- Lists files and folders in the current directory
+Variants:
+ls folder_name → lists contents of a specific folder
+
+cd- Changes the current directory
+Examples:
+cd folder_name → move into a folder
+cd .. → move one directory level up
+
+-- Creating Files and Directories
+mkdir- Creates a new directory (folder)
+
+touch- Creates an empty file
+Example:
+touch x.csv
+touch data.tsv
+
+--Writing and Viewing File Content
+echo- Writes text into a file
+Overwrite existing content:
+echo "text" > x.csv
+Append without overwriting:
+echo "text" >> x.csv
+Important:
+> overwrites
+>> appends (safe for biological data)
+
+cat- Displays file contents on the terminal
+Example:
+cat x.csv
+
+--File and Directory Management
+cp- Copies files from one location to another
+Example:
+cp STCC_B/class.csv demo2/
+
+mv- Moves or renames files and directories
+Used for: Organizing project structure
+Renaming incorrectly named files
+
+rmdir
+Deletes empty directories only
+Does not work on files or non-empty folders
+
+-- Shell Productivity Shortcuts
+Tab - Completion
+Press Tab to auto-complete commands or file names
+Reduces typing errors
+
+Command History
+↑ (up arrow) recalls the previous command
+Useful for repeating or modifying commands
+
+clear
+Clears the terminal screen
+Does not delete data or affect files
+
+Why Do These Commands Matter in Bioinformatics:
+-Bioinformatics workflows rely on structured directories
+-Large datasets require safe file handling
+-Mistakes like overwriting files can corrupt results
+-Command-line efficiency improves reproducibility and speed
+-These commands form the minimum operational literacy expected of any bioinformatics trainee.
