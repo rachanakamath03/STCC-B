@@ -1,4 +1,225 @@
-Class 2 : Working with Biological Files (FASTA & GTF)
+Class 2 : Working with Biological Files 
+# Unix / Shell Basics for Bioinformatics
+
+---
+
+## 3. Files, Directories, and Naming Patterns
+
+### 3.1 Creating Files
+
+* `touch` creates empty files
+* `echo` writes content into files
+
+Example:
+
+* Creating multiple FASTQ placeholders using brace expansion
+
+  * sampleA, sampleB, sampleC
+  * Forward (R1) and Reverse (R2) reads
+
+This mirrors paired-end sequencing structure used in NGS.
+
+---
+
+## 4. Wildcards and Pattern Matching
+
+Wildcards allow selection of multiple files without listing them individually. This is critical when working with tens to thousands of sequencing files.
+
+### 4.1 Asterisk (`*`)
+
+* Matches any number of characters
+* Used when filenames share a common pattern
+
+Example use cases:
+
+* Selecting all FASTQ files
+* Selecting all reads from a specific sample
+
+### 4.2 Character Sets (`[]`)
+
+* Matches one character from a defined set
+
+Examples:
+
+* `sample[AB]_R1.fastq` → selects sampleA_R1 and sampleB_R1
+* `sample[A-C]_R2.fastq` → selects sampleA, sampleB, sampleC reverse reads
+
+This is especially useful when subsets of samples are required for analysis or testing.
+
+---
+
+## 5. Listing Files
+
+### 5.1 Basic Listing
+
+* `ls` → lists files
+
+### 5.2 Detailed Listing
+
+* `ls -l` → long format
+
+  * Permissions
+  * Owner
+  * Size
+  * Timestamp
+
+This helps verify file integrity and detect empty or corrupted files (e.g., 0-byte FASTQ files).
+
+---
+
+## 6. Streams in Unix
+
+A **stream** is a flow of data between commands and the operating system. Every Unix command communicates using streams.
+
+### 6.1 The Three Standard Streams
+
+| Stream | Number | Purpose             | Default Destination |
+| ------ | ------ | ------------------- | ------------------- |
+| stdin  | 0      | Input to a command  | Keyboard            |
+| stdout | 1      | Normal output       | Terminal            |
+| stderr | 2      | Errors and warnings | Terminal            |
+
+---
+
+## 7. Standard Input (stdin)
+
+* Supplies data into a command
+* Default source is the keyboard
+
+Example:
+
+* `cat` waits for input and echoes it back
+
+In bioinformatics, stdin is often supplied from files or previous commands.
+
+---
+
+## 8. Standard Output (stdout)
+
+* Carries successful output
+* Printed to terminal by default
+
+Example:
+
+* `ls` outputs file names via stdout
+
+---
+
+## 9. Standard Error (stderr)
+
+* Carries error and warning messages
+* Separated from stdout to protect data integrity
+
+Example:
+
+* `ls missing_file` sends error via stderr
+
+This separation is crucial when building clean biological datasets.
+
+---
+
+## 10. Redirection
+
+Redirection changes where streams are sent instead of displaying them on the terminal.
+
+### 10.1 Redirecting stdout
+
+* `>` writes output to a file (overwrites)
+* `>>` appends output to a file
+
+Example:
+
+* Building a combined FASTA file
+
+---
+
+## 11. Redirecting stderr
+
+* `2>` redirects error messages only
+
+Example:
+
+* Capturing missing-file errors without contaminating sequence data
+
+---
+
+## 12. Redirecting stdout and stderr Together
+
+Two equivalent methods:
+
+* `command > all_output.txt 2>&1`
+* `command &> all_output.txt`
+
+Used when full logs are required for debugging.
+
+---
+
+## 13. Redirecting stdin
+
+* `<` supplies a file as input to a command
+
+Example:
+
+* Sorting data from a text file
+
+---
+
+## 14. Pipes (`|`): Connecting Commands
+
+A pipe sends stdout of one command directly into stdin of another.
+
+Example:
+
+* Counting files in a directory
+
+This enables construction of efficient, memory-conscious pipelines.
+
+---
+
+## 15. Practical Bioinformatics Context
+
+Bioinformatics tools often:
+
+* Output large results to stdout
+* Send warnings or quality metrics to stderr
+
+Example:
+
+* Running quality control tools on FASTQ files
+
+Separating outputs ensures:
+
+* Clean biological data
+* Reproducibility
+* Easier debugging
+
+---
+
+## 16. `>>` vs `2>`: Key Distinction
+
+* `>>` appends **normal output (stdout)**
+* `2>` redirects **error messages (stderr)**
+
+### Summary Principles
+
+1. Every Linux command produces stdout and stderr
+2. `>>` is used to extend biological data files
+3. `2>` is used to isolate errors
+4. Never mix errors with biological sequence or tabular data
+
+**Key idea:**
+
+> `>>` saves results, `2>` saves complaints.
+
+---
+
+## 17. Why This Matters for Bioinformatics Pipelines
+
+* Ensures clean FASTA / FASTQ / TSV files
+* Prevents silent data corruption
+* Supports scalable and automated workflows
+* Forms the foundation of reproducible research
+
 
 FASTA Format
 Header lines begin with >
