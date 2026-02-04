@@ -1,0 +1,21 @@
+-- Pipes (`|`): Connecting Commands
+A pipe sends stdout of one command directly into stdin of another.
+Example:
+* Counting files in a directory
+This enables construction of efficient, memory-conscious pipelines.
+---
+grep (Global Regular Expression Print) is a powerful command-line utility in Unix/Linux systems used to search text within files for specific patterns or strings. It scans files and outputs lines that match a regular expression. It is essential for searching logs, filtering command output, and code analysis.
+grep -c "^>" tga1-protein.fasta - to check no. of reads
+grep -v "^>" tb1-protein.fasta | grep --color "[^ATGC]"
+
+Practical Bioinformatics Context
+Bioinformatics tools often:
+* Output large results to stdout
+* Send warnings or quality metrics to stderr
+- Example:
+* Running quality control tools on FASTQ files
+
+Separating outputs ensures:
+* Clean biological data
+* Reproducibility
+* Easier debugging
