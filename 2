@@ -18,22 +18,7 @@ Sequence
 +
 Quality string
 
-GTF Format
-Tab-separated genomic annotation format
-Each row = genomic feature
-Column 9 stores attributes:
-gene_id
-transcript_id
-Exact quoting is required when searching attributes.
 
-Safe Inspection of Large Files
-Never cat large genomic files.
-Tool	Purpose
-less	Scroll safely
-head	Inspect headers
-tail	Check file endings
-sed -n	Controlled range viewing
-sed -n '1,50p' file.gtf
 
 FASTA Quality Control Pipelines
 grep -v "^>" file.fasta | tr 'a-z' 'A-Z' | grep "[^ATGC]"
@@ -44,8 +29,3 @@ Detect invalid bases
 Regex Insight (Interview-level)
 The caret (^) anchors the start of a line outside brackets, but negates characters inside character classes.
 
-GTF Parsing with awk
-awk -F'\t' '$3=="exon" {print $1 ":" $4 "-" $5 "\t" $9}' file.gtf
-Used for:
-Extracting exon coordinates
-Structured annotation parsing
